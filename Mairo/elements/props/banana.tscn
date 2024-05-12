@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2olashmt5d6m"]
+
+[ext_resource type="Script" path="res://elements/props/banana.gd" id="1_clovk"]
+[ext_resource type="Texture2D" uid="uid://qqo3k6wxnpc7" path="res://sprites/banan.png" id="1_pauuf"]
+[ext_resource type="AudioStream" uid="uid://bcn6pj00d3liv" path="res://audio/Splat.wav" id="3_ae7x8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mw0tf"]
+size = Vector2(26, 38)
+
+[node name="Banana" type="StaticBody2D"]
+y_sort_enabled = true
+position = Vector2(525, 376)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_clovk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_mw0tf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7.00003, -2)
+scale = Vector2(5, 5)
+texture = ExtResource("1_pauuf")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_mw0tf")
+
+[node name="Splats" type="CPUParticles2D" parent="."]
+
+[node name="Splat" type="AudioStreamPlayer2D" parent="Splats"]
+stream = ExtResource("3_ae7x8")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

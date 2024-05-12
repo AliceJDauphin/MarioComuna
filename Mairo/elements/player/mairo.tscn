@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://btracnbahm4f3"]
+
+[ext_resource type="Texture2D" uid="uid://h1hvdacayllo" path="res://sprites/mairo.png" id="1_u8k71"]
+
+[node name="Mairo" type="Sprite2D"]
+position = Vector2(0, -6)
+scale = Vector2(2.375, 2.375)
+texture = ExtResource("1_u8k71")
+hframes = 4
+vframes = 4
